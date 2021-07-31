@@ -1,39 +1,54 @@
+/*p.319 ì‹¤ìŠµë¬¸ì œ9
+ë‹¤ìŒì˜ Stackì¸í„°í˜ì´ìŠ¤ë¥¼ ìƒì†ë°›ì•„ ë¬¸ìì—´ì„ ì €ì¥í•˜ëŠ” StringStackí´ë˜ìŠ¤ë¥¼ êµ¬í˜„í•˜ë¼.
+ê·¸ë¦¬ê³  ë‹¤ìŒ ì‹¤í–‰ ì‚¬ë¡€ì™€ ê°™ì´ ì‘ë™í•˜ë„ë¡ StackAppí´ë˜ìŠ¤ì— run()ë©”ì†Œë“œë¥¼ ì‘ì„±í•˜ë¼.
+ì˜ˆì‹œ ì…ë ¥ 1 
+ì´ ìŠ¤íƒ ì €ì¥ ê³µê°„ì˜ í¬ê¸° ì…ë ¥ >> 3
+ë¬¸ìì—´ ì…ë ¥ >> hello
+ë¬¸ìì—´ ì…ë ¥ >> sunny
+ë¬¸ìì—´ ì…ë ¥ >> smile
+ë¬¸ìì—´ ì…ë ¥ >> happy
+ë¬¸ìì—´ ì…ë ¥ >> ê·¸ë§Œ
+ì˜ˆì‹œ ì¶œë ¥ 1
+ìŠ¤íƒì´ ê½‰ ì°¨ì„œ í‘¸ì‹œ ë¶ˆê°€!
+ìŠ¤íƒì— ì €ì¥ëœ ëª¨ë“  ë¬¸ìì—´ íŒ : smile sunny hello
+*/
+
 import java.util.Scanner;
 public class Main4stacktotal {
   public static void main(String[] args) {
-      StackApp.run();/*StackAppÅ¬·¡½ºÀÇ run()¸Ş¼Òµå¿¡¸¸ Á¢±Ù. ·¹ÆÛ·±½º º¯¼ö ¼±¾ğ, »ı¼º ¾ÈÇØµµ µÇ³ª?*/
+      StackApp.run();/*StackAppí´ë˜ìŠ¤ì˜ run()ë©”ì†Œë“œì—ë§Œ ì ‘ê·¼. ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜ ì„ ì–¸, ìƒì„± ì•ˆí•´ë„ ë˜ë‚˜?*/
   }
 }
 interface Stack {
-  int length(); // ÇöÀç ½ºÅÃ¿¡ ÀúÀåµÈ °³¼ö ¸®ÅÏ
-  int capacity(); // ½ºÅÃÀÇ ÀüÃ¼ ÀúÀå °¡´ÉÇÑ °³¼ö ¸®ÅÏ
-  String pop(); // ½ºÅÃÀÇ Åé(top)¿¡ ½Ç¼ö ÀúÀå
-  boolean push(String val); // ½ºÅÃÀÇ Åé(top)¿¡ ÀúÀåµÈ ½Ç¼ö ¸®ÅÏ
+  int length(); // í˜„ì¬ ìŠ¤íƒì— ì €ì¥ëœ ê°œìˆ˜ ë¦¬í„´
+  int capacity(); // ìŠ¤íƒì˜ ì „ì²´ ì €ì¥ ê°€ëŠ¥í•œ ê°œìˆ˜ ë¦¬í„´
+  String pop(); // ìŠ¤íƒì˜ í†±(top)ì— ì‹¤ìˆ˜ ì €ì¥
+  boolean push(String val); // ìŠ¤íƒì˜ í†±(top)ì— ì €ì¥ëœ ì‹¤ìˆ˜ ë¦¬í„´
 }
-class StringStack implements Stack {//interface ±¸ÇöÇÑ(»ó¼ÓÀÇ¹Ì) Å¬·¡½º StringStack.
-   private int num; // ÀúÀå °¡´ÉÇÑ °³¼ö
-   private int set; // ÀúÀå ÀÎµ¦½º
-   private String[] stack;//StringÀ» ÀúÀåÇÏ´Â ¹è¿­ ¼±¾ğ, ·¹ÆÛ·±½º º¯¼ö´Â stack.
+class StringStack implements Stack {//interface êµ¬í˜„í•œ(ìƒì†ì˜ë¯¸) í´ë˜ìŠ¤ StringStack.
+   private int num; // ì €ì¥ ê°€ëŠ¥í•œ ê°œìˆ˜
+   private int set; // ì €ì¥ ì¸ë±ìŠ¤
+   private String[] stack;//Stringì„ ì €ì¥í•˜ëŠ” ë°°ì—´ ì„ ì–¸, ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜ëŠ” stack.
    
    public StringStack(int num) {
       this.num = num;
       this.set = 0;
-      stack = new String[num];//numÇàÀÇ ¹è¿­ »ı¼º.
-   }//numÀ» ¸Å°³º¯¼ö·Î ÇÏ´Â »ı¼ºÀÚ
+      stack = new String[num];//numí–‰ì˜ ë°°ì—´ ìƒì„±.
+   }//numì„ ë§¤ê°œë³€ìˆ˜ë¡œ í•˜ëŠ” ìƒì„±ì
    
    public int length() {return set;}
    public int capacity() {return stack.length;}
    
    public String pop() {
-      if(set-1 < 0) return null; // stack¿¡ ¾Æ¹«°Íµµ ³ÖÁö ¾Ê¾ÒÀ» ‹š
-      set--; // stack ÇÑÄ­À» ³»·ÁÁÜ (stack[set]Àº ºó°ø°£À» °¡¸®Å°°í ÀÖÀ¸´Ï±ñ)
-      String s = stack[set]; // ¸Ç À§ÀÇ °ª
+      if(set-1 < 0) return null; // stackì— ì•„ë¬´ê²ƒë„ ë„£ì§€ ì•Šì•˜ì„ Â‹Âš
+      set--; // stack í•œì¹¸ì„ ë‚´ë ¤ì¤Œ (stack[set]ì€ ë¹ˆê³µê°„ì„ ê°€ë¦¬í‚¤ê³  ìˆìœ¼ë‹ˆê¹)
+      String s = stack[set]; // ë§¨ ìœ„ì˜ ê°’
       return s;
    }
    public boolean push(String val) {
       if(set < num) {
-         stack[set] = val; //¸Ç À§¿¡ ¹®ÀÚ¿­À» ³Ö¾îÁÜ
-         set++; // stack ÇÑÄ­À» ¿Ã·ÁÁÜ
+         stack[set] = val; //ë§¨ ìœ„ì— ë¬¸ìì—´ì„ ë„£ì–´ì¤Œ
+         set++; // stack í•œì¹¸ì„ ì˜¬ë ¤ì¤Œ
          return true;
       }
       else return false;
@@ -42,17 +57,17 @@ class StringStack implements Stack {//interface ±¸ÇöÇÑ(»ó¼ÓÀÇ¹Ì) Å¬·¡½º StringSt
 class StackApp {
   public static void run() {
       Scanner sc = new Scanner(System.in);
-      System.out.print("ÃÑ ½ºÅÃ ÀúÀå °ø°£ÀÇ Å©±â ÀÔ·Â >> ");
+      System.out.print("ì´ ìŠ¤íƒ ì €ì¥ ê³µê°„ì˜ í¬ê¸° ì…ë ¥ >> ");
       int num;
       num = sc.nextInt();
       StringStack stack = new StringStack(num);
       while(true) {
-         System.out.print("¹®ÀÚ¿­ ÀÔ·Â >> ");
+         System.out.print("ë¬¸ìì—´ ì…ë ¥ >> ");
          String val = sc.next();
-         if(val.equals("±×¸¸")) break;
-         if(!stack.push(val)) System.out.println("½ºÅÃÀÌ ²Ë Â÷¼­ Çª½Ã ºÒ°¡!");
+         if(val.equals("ê·¸ë§Œ")) break;
+         if(!stack.push(val)) System.out.println("ìŠ¤íƒì´ ê½‰ ì°¨ì„œ í‘¸ì‹œ ë¶ˆê°€!");
       }
-      System.out.print("½ºÅÃ¿¡ ÀúÀåµÈ ¸ğµç ¹®ÀÚ¿­ ÆË : ");
+      System.out.print("ìŠ¤íƒì— ì €ì¥ëœ ëª¨ë“  ë¬¸ìì—´ íŒ : ");
       int len;
       len = stack.length();
       for(int i=0; i<len; i++) {
