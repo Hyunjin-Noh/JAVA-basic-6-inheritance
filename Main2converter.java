@@ -1,33 +1,49 @@
+/*p.315~6 ì‹¤ìŠµë¬¸ì œ 4
+ConverterëŠ” ë‹¨ìœ„ë¥¼ ë³€í™˜í•˜ëŠ” ì¶”ìƒí´ë˜ìŠ¤ì´ë‹¤.
+Converterí´ë˜ìŠ¤ë¥¼ ìƒì†ë°›ì•„ kmë¥¼ mile(ë§ˆì¼)ë¡œ ë³€í™˜í•˜ëŠ” km2Mileí´ë˜ìŠ¤ë¥¼ ì‘ì„±í•˜ë¼.
+
+ì˜ˆì‹œ ì…ë ¥ 1 
+Kmì„ Mileë¡œ ë°”ê¿‰ë‹ˆë‹¤.
+Kmì„ ì…ë ¥í•˜ì„¸ìš”>> 30
+ì˜ˆì‹œ ì¶œë ¥ 1
+ë³€í™˜ ê²°ê³¼: 18.75Mileì…ë‹ˆë‹¤.
+ì˜ˆì‹œ ì…ë ¥ 2 
+Kmì„ Mileë¡œ ë°”ê¿‰ë‹ˆë‹¤.
+Kmì„ ì…ë ¥í•˜ì„¸ìš”>> 1.60934
+ì˜ˆì‹œ ì¶œë ¥ 2
+ë³€í™˜ ê²°ê³¼: 1.0058375Mileì…ë‹ˆë‹¤.
+*/
+
 import java.util.Scanner;
 
 public class Main2converter
 {
   public static void main(String[] args) {
-    Km2Mile toMile = new Km2Mile(1.6);//Km2MileÅ¬·¡½ºÀÇ °´Ã¼ ¼±¾ğ°ú »ı¼º, ·¹ÆÛ·±½º º¯¼ö´Â toMile. 
-    toMile.run();//run()¸Ş¼Òµå¿¡ Á¢±Ù. ratio¸¦ 1.6À¸·Î ¼³Á¤ÇßÀ¸¹Ç·Î, run()¸Ş¼Òµå¿¡¼­ val/1.6ÀÎ °ªÀÌ res°¡ ³ª¿À°Ô µÊ! (Àú¸íÇÑ »ç½Ç: km/1.6=mile)
+    Km2Mile toMile = new Km2Mile(1.6);//Km2Mileí´ë˜ìŠ¤ì˜ ê°ì²´ ì„ ì–¸ê³¼ ìƒì„±, ë ˆí¼ëŸ°ìŠ¤ ë³€ìˆ˜ëŠ” toMile. 
+    toMile.run();//run()ë©”ì†Œë“œì— ì ‘ê·¼. ratioë¥¼ 1.6ìœ¼ë¡œ ì„¤ì •í–ˆìœ¼ë¯€ë¡œ, run()ë©”ì†Œë“œì—ì„œ val/1.6ì¸ ê°’ì´ resê°€ ë‚˜ì˜¤ê²Œ ë¨! (ì €ëª…í•œ ì‚¬ì‹¤: km/1.6=mile)
   }
 }
-abstract class Converter {//Converter Ãß»óÅ¬·¡½º.
+abstract class Converter {//Converter ì¶”ìƒí´ë˜ìŠ¤.
   abstract protected double convert(double src);
   abstract protected String getSrcString();
-  abstract protected String getDestString();//src: =source, des: ÁÖ´Ù
-  //¿©±â±îÁö Ãß»ó¸Ş¼Òµå. ¼­ºêÅ¬·¡½º¿¡¼­ ±¸ÇöÇØ¾ß ¼­ºêÅ¬·¡½º°¡ Ãß»óÅ¬·¡½º°¡ ¾ÈµÊ. 
+  abstract protected String getDestString();//src: =source, des: ì£¼ë‹¤
+  //ì—¬ê¸°ê¹Œì§€ ì¶”ìƒë©”ì†Œë“œ. ì„œë¸Œí´ë˜ìŠ¤ì—ì„œ êµ¬í˜„í•´ì•¼ ì„œë¸Œí´ë˜ìŠ¤ê°€ ì¶”ìƒí´ë˜ìŠ¤ê°€ ì•ˆë¨. 
   protected double ratio;
   public void run() {
     Scanner scanner = new Scanner(System.in);
-    System.out.println(getSrcString() + "À» " + getDestString() + "·Î ¹Ù²ß´Ï´Ù.");
-    System.out.print(getSrcString() + "À» ÀÔ·ÂÇÏ¼¼¿ä>> ");
+    System.out.println(getSrcString() + "ì„ " + getDestString() + "ë¡œ ë°”ê¿‰ë‹ˆë‹¤.");
+    System.out.print(getSrcString() + "ì„ ì…ë ¥í•˜ì„¸ìš”>> ");
     double val = scanner.nextDouble();
     double res = convert(val);
-    System.out.println("º¯È¯ °á°ú: " + res + getDestString() + "ÀÔ´Ï´Ù.");
+    System.out.println("ë³€í™˜ ê²°ê³¼: " + res + getDestString() + "ì…ë‹ˆë‹¤.");
     scanner.close();
   }
 }
-class Km2Mile extends Converter{//Converter Ãß»óÅ¬·¡½º¸¦ »ó¼Ó¹Ş´Â ¼­ºê Å¬·¡½º Km2Mile.
+class Km2Mile extends Converter{//Converter ì¶”ìƒí´ë˜ìŠ¤ë¥¼ ìƒì†ë°›ëŠ” ì„œë¸Œ í´ë˜ìŠ¤ Km2Mile.
 	@Override
     protected double convert(double src) {return src/ratio;}
     protected String getSrcString() {return "Km";}
     protected String getDestString() {return "mile";}
-    //¿©±â±îÁö, Ãß»ó¸Ş¼Òµå ±¸ÇöÇÔ!
+    //ì—¬ê¸°ê¹Œì§€, ì¶”ìƒë©”ì†Œë“œ êµ¬í˜„í•¨!
     public Km2Mile(double ratio) {this.ratio=ratio;}
 }
