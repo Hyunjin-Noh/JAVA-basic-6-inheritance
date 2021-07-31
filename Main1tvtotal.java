@@ -1,3 +1,12 @@
+/*p.314 ì‹¤ìŠµë¬¸ì œ1,2
+ë‹¤ìŒ main()ë©”ì†Œë“œì™€ ì‹¤í–‰ ê²°ê³¼ë¥¼ ì°¸ê³ í•˜ì—¬ 
+TVí´ë˜ìŠ¤ë¥¼ ìƒì†ë°›ì€ ColorTVì™€ ì´ë¥¼ ë‹¤ì‹œ ìƒì†ë°›ëŠ” IPTVí´ë˜ìŠ¤ë¥¼ ì‘ì„±í•˜ë¼.
+ì˜ˆì‹œ ì…ë ¥ 1 
+#ì—†ìŒ
+ì˜ˆì‹œ ì¶œë ¥ 1
+ë‚˜ì˜ IPTVëŠ” 192.1.1.2 ì£¼ì†Œì˜ 32ì¸ì¹˜ 2048ì»¬ëŸ¬
+*/
+
 public class Main1tvtotal{
 	public static void main(String[] args) {
 		IPTV iptv = new IPTV("192.1.1.2", 32, 2048);
@@ -6,29 +15,29 @@ public class Main1tvtotal{
 }
 class TV{
 	   private int size;
-	   public TV(int size) {this.size = size;}//TVÅ¬·¡½ºÀÇ »ı¼ºÀÚ. size¸¦ ¸Å°³º¯¼ö·Î °¡Áü.
-	   protected int getSize() {return size;}//TVÅ¬·¡½ºÀÇ, size º¯¼ö ¸®ÅÏÇÏ´Â ¸Ş¼Òµå
+	   public TV(int size) {this.size = size;}//TVí´ë˜ìŠ¤ì˜ ìƒì„±ì. sizeë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§.
+	   protected int getSize() {return size;}//TVí´ë˜ìŠ¤ì˜, size ë³€ìˆ˜ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	}
 
 class ColorTV extends TV {
    private int resolution;
    ColorTV(int size, int resolution) {
-      super(size);//Ã¹ ÁÙ¿¡ ¿Í¾ß ÇÔ. ÀÎÀÚ¸¦ ÀÌ¿ëÇÏ¿© ½´ÆÛÅ¬·¡½ºÀÇ ÇØ´çÇÏ´Â Àû´çÇÑ »ı¼ºÀÚ È£Ãâ.
+      super(size);//ì²« ì¤„ì— ì™€ì•¼ í•¨. ì¸ìë¥¼ ì´ìš©í•˜ì—¬ ìŠˆí¼í´ë˜ìŠ¤ì˜ í•´ë‹¹í•˜ëŠ” ì ë‹¹í•œ ìƒì„±ì í˜¸ì¶œ.
       this.resolution = resolution;
-   }//ColorTVÅ¬·¡½ºÀÇ »ı¼ºÀÚ. size¿Í resolutionÀ» ¸Å°³º¯¼ö·Î °¡Áü.
+   }//ColorTVí´ë˜ìŠ¤ì˜ ìƒì„±ì. sizeì™€ resolutionì„ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§.
    public void printProperty() {
-      System.out.print(getSize()+"ÀÎÄ¡ "+resolution+"ÄÃ·¯");
-   }//ColorTVÅ¬·¡½ºÀÇ, »çÀÌÁî¿Í ÇØ»óµµ¸¦ Ãâ·ÂÇÏ´Â ¸Ş¼Òµå.
+      System.out.print(getSize()+"ì¸ì¹˜ "+resolution+"ì»¬ëŸ¬");
+   }//ColorTVí´ë˜ìŠ¤ì˜, ì‚¬ì´ì¦ˆì™€ í•´ìƒë„ë¥¼ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ.
 }
 
 class IPTV extends ColorTV {
 	   private String IP;
 	   IPTV(String IP, int size, int resolution) {
-	      super(size, resolution);//Ã¹ ÁÙ¿¡ ¿Í¾ß ÇÔ. ÀÎÀÚ¸¦ ÀÌ¿ëÇÏ¿© ½´ÆÛÅ¬·¡½ºÀÇ ÇØ´çÇÏ´Â Àû´çÇÑ »ı¼ºÀÚ È£Ãâ.
+	      super(size, resolution);//ì²« ì¤„ì— ì™€ì•¼ í•¨. ì¸ìë¥¼ ì´ìš©í•˜ì—¬ ìŠˆí¼í´ë˜ìŠ¤ì˜ í•´ë‹¹í•˜ëŠ” ì ë‹¹í•œ ìƒì„±ì í˜¸ì¶œ.
 	      this.IP = IP;
-	   }//IPTVÅ¬·¡½ºÀÇ »ı¼ºÀÚ. size, resolution, ±×¸®°í IP¸¦ ¸Å°³º¯¼ö·Î °¡Áü.
+	   }//IPTVí´ë˜ìŠ¤ì˜ ìƒì„±ì. size, resolution, ê·¸ë¦¬ê³  IPë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§.
 	   public void printProperty() {
-	      System.out.print("³ªÀÇ IPTV´Â "+IP+" ÁÖ¼ÒÀÇ ");
+	      System.out.print("ë‚˜ì˜ IPTVëŠ” "+IP+" ì£¼ì†Œì˜ ");
 	      super.printProperty();
-	   }//IPTVÅ¬·¡½ºÀÇ, IPÁÖ¼Ò¸¦ Ãâ·ÂÇÏ´Â ¸Ş¼Òµå.
+	   }//IPTVí´ë˜ìŠ¤ì˜, IPì£¼ì†Œë¥¼ ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œ.
 	}
