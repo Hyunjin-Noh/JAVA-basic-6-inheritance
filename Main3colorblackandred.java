@@ -1,22 +1,32 @@
+/*p.317 ì‹¤ìŠµë¬¸ì œ6
+Pointë¥¼ ìƒì†ë°›ì•„ ìƒ‰ì„ ê°€ì§„ ì ì„ ë‚˜íƒ€ë‚´ëŠ”ColorPointí´ë˜ìŠ¤ë¥¼ ì‘ì„±í•˜ë¼.
+ë‹¤ìŒmain()ë©”ì†Œë“œë¥¼ í¬í•¨í•˜ê³  ì‹¤í–‰ ê²°ê³¼ì™€ ê°™ì´ ì¶œë ¥ë˜ê²Œ í•˜ë¼.
+ì˜ˆì‹œ ì…ë ¥ 1 
+ì—†ìŒ
+ì˜ˆì‹œ ì¶œë ¥ 1
+BLACKìƒ‰ì˜ (0,0)ì˜ ì ì…ë‹ˆë‹¤.
+REDìƒ‰ì˜ (5,5)ì˜ ì ì…ë‹ˆë‹¤.
+*/
+
 public class Main3colorblackandred {
   public static void main(String[] args) {
-    ColorPoint zeroPoint = new ColorPoint(); //(0,0)À§Ä¡ÀÇ BLACK»ö Á¡.
-    System.out.println(zeroPoint.toString() + "ÀÔ´Ï´Ù.");
+    ColorPoint zeroPoint = new ColorPoint(); //(0,0)ìœ„ì¹˜ì˜ BLACKìƒ‰ ì .
+    System.out.println(zeroPoint.toString() + "ì…ë‹ˆë‹¤.");
     
-    ColorPoint cp = new ColorPoint(10, 10);//(10, 10)À§Ä¡ÀÇ BLACK»ö Á¡.
+    ColorPoint cp = new ColorPoint(10, 10);//(10, 10)ìœ„ì¹˜ì˜ BLACKìƒ‰ ì .
     
     cp.setXY(5, 5);
     cp.setColor("RED");
-    System.out.println(cp.toString() + "ÀÔ´Ï´Ù.");//RED»öÀÇ (5,5)ÀÇ Á¡ÀÔ´Ï´Ù.
+    System.out.println(cp.toString() + "ì…ë‹ˆë‹¤.");//REDìƒ‰ì˜ (5,5)ì˜ ì ì…ë‹ˆë‹¤.
   }
 }
 class Point {
   private int x, y;
-  public Point(int x, int y) { this.x = x; this.y = y; }//PointÅ¬·¡½ºÀÇ »ı¼ºÀÚ. x, y¸¦ ¸Å°³º¯¼ö·Î °¡Áü.
+  public Point(int x, int y) { this.x = x; this.y = y; }//Pointí´ë˜ìŠ¤ì˜ ìƒì„±ì. x, yë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§.
   
   public int getX() { return x; }
   public int getY() { return y; }
-  //PointÅ¬·¡½ºÀÇ ¸â¹ö ¸Ş¼Òµå. °¢°¢ private ¸â¹ö ÇÊµå x, y°ªÀ» ¹İÈ¯ÇÔ.
+  //Pointí´ë˜ìŠ¤ì˜ ë©¤ë²„ ë©”ì†Œë“œ. ê°ê° private ë©¤ë²„ í•„ë“œ x, yê°’ì„ ë°˜í™˜í•¨.
   
   protected void move(int x, int y) { this.x = x; this.y = y; }
 }
@@ -30,12 +40,12 @@ class ColorPoint extends Point {
 	public ColorPoint(int x, int y) {
 		super(x, y);
 		this.color="BLACK";}
-	//Á» Æ¯º°ÇÑ »ı¼ºÀÚ µÑ¤¾¤¾....
+	//ì¢€ íŠ¹ë³„í•œ ìƒì„±ì ë‘˜ã…ã…....
 	public void setColor(String color) {this.color = color;}
-	//ColorPointÅ¬·¡½ºÀÇ ¸â¹ö ¸Ş¼Òµå. private ¸â¹ö ÇÊµå color°ªÀ» ¹İÈ¯ÇÔ.
+	//ColorPointí´ë˜ìŠ¤ì˜ ë©¤ë²„ ë©”ì†Œë“œ. private ë©¤ë²„ í•„ë“œ colorê°’ì„ ë°˜í™˜í•¨.
 	
-	public void setXY(int x, int y) {move(x, y);}//¾Æ±î ±× Æ¯º°ÇÑ »ı¼ºÀÚ·Î BLACK(10,10)¿¡ ÇØ´ç½ÃÄÑ³õ°í ¿Å±â·Á°í move¾´ °Å±¸³ª¤¾¤¾¤¾¤¾....¹ø°Å·Ó°Ô¤¾¤¾
+	public void setXY(int x, int y) {move(x, y);}//ì•„ê¹Œ ê·¸ íŠ¹ë³„í•œ ìƒì„±ìë¡œ BLACK(10,10)ì— í•´ë‹¹ì‹œì¼œë†“ê³  ì˜®ê¸°ë ¤ê³  moveì“´ ê±°êµ¬ë‚˜ã…ã…ã…ã…....ë²ˆê±°ë¡­ê²Œã…ã…
 	public String toString() {
-		String tmp = color+"»öÀÇ "+"("+getX()+","+getY()+")"+"ÀÇ Á¡";//²À ½´ÆÛÅ¬·¡½ºÀÇ privateº¯¼ö¿¡ Á¢±ÙÇÏ·Á¸é ¹Ì¸® ½á³õÀº getterÀÌ¿ëÇØ¾ßÇÔ!
-		return tmp;}//StringÀ» returnÇÏ´Â ¹æ¹ıÀº String º¯¼ö tmp¿¡ ÀúÀåÇØ³õ°í ¸®ÅÏÇÏ´Â °Å±¸³ª!!
+		String tmp = color+"ìƒ‰ì˜ "+"("+getX()+","+getY()+")"+"ì˜ ì ";//ê¼­ ìŠˆí¼í´ë˜ìŠ¤ì˜ privateë³€ìˆ˜ì— ì ‘ê·¼í•˜ë ¤ë©´ ë¯¸ë¦¬ ì¨ë†“ì€ getterì´ìš©í•´ì•¼í•¨!
+		return tmp;}//Stringì„ returní•˜ëŠ” ë°©ë²•ì€ String ë³€ìˆ˜ tmpì— ì €ì¥í•´ë†“ê³  ë¦¬í„´í•˜ëŠ” ê±°êµ¬ë‚˜!!
 }
